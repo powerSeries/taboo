@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class TabooWordsController
 {
-    private Context mContext;
+    private final Context mContext;
 
     public ArrayList<TabooWord> allTabooWords;
     public ArrayList<TabooWord> dupeWords;
@@ -49,7 +49,7 @@ public class TabooWordsController
         try
         {
             String line;
-            ArrayList<TabooWord> fileWords = new ArrayList<TabooWord>();
+            ArrayList<TabooWord> fileWords = new ArrayList<>();
 
             // Obtain all the assets
             AssetManager assetManager = mContext.getAssets();
@@ -68,11 +68,11 @@ public class TabooWordsController
             JSONArray jsonItems = new JSONArray(lines);
 
             // Convert each Json Object to Taboo Word class
+            Gson gson = new Gson();
             for(int i = 0; i < jsonItems.length(); i++)
             {
+                TabooWord tWord;
                 Object item = jsonItems.get(i);
-                TabooWord tWord = new TabooWord();
-                Gson gson = new Gson();
                 tWord = gson.fromJson(item.toString(), TabooWord.class);
                 fileWords.add(tWord);
             }
