@@ -9,7 +9,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TabooWordsController tWordController = new TabooWordsController();
+        TabooWordsController tWordController = new TabooWordsController(this);
         setContentView(R.layout.activity_main);
     }
 }
