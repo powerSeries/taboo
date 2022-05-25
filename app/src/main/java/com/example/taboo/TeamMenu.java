@@ -1,6 +1,8 @@
 package com.example.taboo;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -12,9 +14,16 @@ public class TeamMenu extends AppCompatActivity {
     String DEFAULT_TEAM_NAME = "Name";
 
     EditText team1Name;
+    String teamName_1;
+
     EditText team2Name;
+    String teamName_2;
+
     EditText numOfPlayers;
+    int numPlayers;
+
     EditText numOfRounds;
+    int numRounds;
 
     Button btnStartGame;
 
@@ -36,9 +45,16 @@ public class TeamMenu extends AppCompatActivity {
     private void StartGame()
     {
         if(!IsInputValid())
-        {
             return;
-        }
+
+        Intent switchToScoreMenu = new Intent(this, ScoreMenu.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("team1Name", teamName_1);
+        bundle.putString("team2Name", teamName_2);
+        bundle.putInt("numOfPlayers", numPlayers);
+        bundle.putInt("numOfRounds", numRounds);
+        switchToScoreMenu.putExtras(bundle);
+        startActivity(switchToScoreMenu);
     }
 
     private boolean IsInputValid()
