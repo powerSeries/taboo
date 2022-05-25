@@ -49,8 +49,8 @@ public class TeamMenu extends AppCompatActivity {
 
         Intent switchToScoreMenu = new Intent(this, ScoreMenu.class);
         Bundle bundle = new Bundle();
-        bundle.putString("team1Name", teamName_1);
-        bundle.putString("team2Name", teamName_2);
+        bundle.putString("Team_1_Name", teamName_1);
+        bundle.putString("Team_2_Name", teamName_2);
         bundle.putInt("numOfPlayers", numPlayers);
         bundle.putInt("numOfRounds", numRounds);
         switchToScoreMenu.putExtras(bundle);
@@ -60,7 +60,7 @@ public class TeamMenu extends AppCompatActivity {
     private boolean IsInputValid()
     {
         team1Name = findViewById(R.id.tb_team1_name);
-        String teamName_1 = team1Name.getText().toString();
+        teamName_1 = team1Name.getText().toString();
         if(teamName_1.equals(DEFAULT_TEAM_NAME) || teamName_1.equals(""))
         {
             team1Name.setError("Please enter a valid team name.");
@@ -68,7 +68,7 @@ public class TeamMenu extends AppCompatActivity {
         }
 
         team2Name = findViewById(R.id.tb_team2_name);
-        String teamName_2 = team2Name.getText().toString();
+        teamName_2 = team2Name.getText().toString();
         if(teamName_2.equals(DEFAULT_TEAM_NAME) || teamName_2.equals(""))
         {
             team2Name.setError("Please enter valid team name.");
@@ -81,7 +81,7 @@ public class TeamMenu extends AppCompatActivity {
             numOfPlayers.setError("Please enter value. DO NOT LEAVE EMPTY");
             return false;
         }
-        int numPlayers = Integer.parseInt(numOfPlayers.getText().toString());
+        numPlayers = Integer.parseInt(numOfPlayers.getText().toString());
         if(numPlayers == 0)
         {
             numOfPlayers.setError("Please enter a valid amount of players");
@@ -94,7 +94,7 @@ public class TeamMenu extends AppCompatActivity {
             numOfRounds.setError("Please enter value. DO NOT LEAVE EMPTY");
             return false;
         }
-        int numRounds = Integer.parseInt(numOfRounds.getText().toString());
+        numRounds = Integer.parseInt(numOfRounds.getText().toString());
         if(numRounds == 0)
         {
             numOfRounds.setError("Please enter a valid amount of rounds");
