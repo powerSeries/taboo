@@ -2,16 +2,15 @@ package com.example.taboo;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-
 import com.example.taboo.models.TabooWord;
+import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
-
 import org.json.JSONArray;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class TabooWordsController
 {
@@ -23,19 +22,39 @@ public class TabooWordsController
     public TabooWordsController(Context context)
     {
         mContext = context;
+        allTabooWords = new ArrayList<>();
+        dupeWords = new ArrayList<>();
         Initialize();
+    }
+
+    public TabooWord GetSingleWord()
+    {
+        int num = (int)(Math.random() * allTabooWords.size());
+        for(TabooWord word : allTabooWords) if (--num < 0) return word;
+        throw new AssertionError();
+    }
+
+    public ArrayList<TabooWord> GetNumWords(int amount)
+    {
+        ArrayList<TabooWord> randomWords = new ArrayList<>();
+        for(int i = 0; i < amount; i++)
+        {
+            randomWords.add(GetSingleWord());
+        }
+        return randomWords;
     }
 
     private void Initialize()
     {
-        ProcessDupeWords();
-
+        //ProcessDupeWords();
+        // TODO: Filter out dupe words later
         ProcessAllTabooWords();
+        Collections.shuffle(allTabooWords);
     }
 
     private void ProcessAllTabooWords()
     {
-        allTabooWords = GetTabooWordsFromFile("results.json");
+        allTabooWords.addAll(GetTabooWordsFromFile("results.json"));
     }
 
     private void ProcessDupeWords()
@@ -45,10 +64,10 @@ public class TabooWordsController
 
     private ArrayList<TabooWord> GetTabooWordsFromFile(String filePath)
     {
-        String lines = "";
+        StringBuilder lines = new StringBuilder();
         try
         {
-            String line;
+            String line = "";
             ArrayList<TabooWord> fileWords = new ArrayList<>();
 
             // Obtain all the assets
@@ -61,17 +80,17 @@ public class TabooWordsController
             // Read through all the lines
             while((line = reader.readLine()) != null)
             {
-                lines += line;
+                lines.append(line);
             }
 
             // Convert lines to a JSON Array for ease of use
-            JSONArray jsonItems = new JSONArray(lines);
+            JSONArray jsonItems = new JSONArray(lines.toString());
 
             // Convert each Json Object to Taboo Word class
             Gson gson = new Gson();
+            TabooWord tWord = new TabooWord();
             for(int i = 0; i < jsonItems.length(); i++)
             {
-                TabooWord tWord;
                 Object item = jsonItems.get(i);
                 tWord = gson.fromJson(item.toString(), TabooWord.class);
                 fileWords.add(tWord);
@@ -80,7 +99,6 @@ public class TabooWordsController
             //Close calls
             reader.close();
             is.close();
-            assetManager.close();
 
             return fileWords;
         }
