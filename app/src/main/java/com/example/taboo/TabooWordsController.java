@@ -2,8 +2,7 @@ package com.example.taboo;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import com.example.taboo.models.TabooWord;
-import com.google.android.material.tabs.TabLayout;
+import com.example.taboo.models.*;
 import com.google.gson.Gson;
 import org.json.JSONArray;
 import java.io.BufferedReader;

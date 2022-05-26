@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Taboo"
         tools:targetApi="31">
         <activity
-            android:name=".game"
+            android:name=".TabooGame"
             android:exported="false" />
         <activity
             android:name=".ScoreMenu"

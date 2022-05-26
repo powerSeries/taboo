@@ -3,6 +3,7 @@ package com.example.taboo;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -44,7 +45,11 @@ public class ScoreMenu extends AppCompatActivity {
 
     private void StartRound()
     {
-
+        Intent switchToGame = new Intent(this, TabooGame.class);
+        Bundle bundle = new Bundle();
+        // Add data as needed below to TabooGame
+        switchToGame.putExtras(bundle);
+        startActivity(switchToGame);
     }
 
     private void InitializeTeams(Bundle bundle)
