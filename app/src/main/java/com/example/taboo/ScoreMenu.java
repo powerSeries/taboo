@@ -8,8 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.taboo.models.TeamModel;
-
+import com.example.taboo.models.*;
 
 public class ScoreMenu extends AppCompatActivity {
     // Team 1 Name and Score
