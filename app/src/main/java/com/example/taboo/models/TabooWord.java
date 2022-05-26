@@ -1,8 +1,11 @@
 package com.example.taboo.models;
 
-import java.util.List;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public class TabooWord {
+
+public class TabooWord implements Serializable
+{
     public String Word;
-    public List<String> ForbiddenWords;
+    public ArrayList<String> ForbiddenWords;
 }
