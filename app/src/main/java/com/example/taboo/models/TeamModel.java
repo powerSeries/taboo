@@ -8,7 +8,7 @@ public class TeamModel implements Serializable
 {
     public String TeamName;
     public ArrayList<TabooWord> currentActiveList;
-    public ArrayList<String> usedWords;
+    public ArrayList<TabooWord> usedWords;
     public int TeamScore;
     public int NumOfSkips;
 
@@ -17,6 +17,19 @@ public class TeamModel implements Serializable
         TeamName = name;
         TeamScore = teamScore;
         NumOfSkips = 0;
+        usedWords = new ArrayList<>();
         currentActiveList = new ArrayList<>();
+    }
+
+    public void UpdateScore(TeamModel teamModel)
+    {
+        this.TeamScore += teamModel.TeamScore;
+        this.NumOfSkips += teamModel.NumOfSkips;
+    }
+
+    public void Reset()
+    {
+        this.TeamScore = 0;
+        this.NumOfSkips = 0;
     }
 }

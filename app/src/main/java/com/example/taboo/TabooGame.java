@@ -2,6 +2,7 @@ package com.example.taboo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -129,7 +130,11 @@ public class TabooGame extends AppCompatActivity {
             }
 
             @Override
-            public void onFinish() {
+            public void onFinish()
+            {
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("resultActiveTeam", GAME_CONTROLLER.ActiveTeam);
+                setResult(RESULT_OK, resultIntent);
                 finish();
             }
         }.start();
@@ -144,8 +149,8 @@ public class TabooGame extends AppCompatActivity {
         updateTimer();
         if(!IsWordLoaded)
         {
-            TabooWord currentWord = GAME_CONTROLLER.popWord();
             IsWordLoaded = true;
+            TabooWord currentWord = GAME_CONTROLLER.popWord();
             LoadWordToScreen(currentWord);
         }
     }
@@ -162,14 +167,20 @@ public class TabooGame extends AppCompatActivity {
 
     private void PosGoNext()
     {
-        GAME_CONTROLLER.ActiveTeam.TeamScore++;
-        IsWordLoaded = false;
+        if(timerRunning)
+        {
+            GAME_CONTROLLER.ActiveTeam.TeamScore++;
+            IsWordLoaded = false;
+        }
     }
 
     private void NegGoNext()
     {
-        GAME_CONTROLLER.ActiveTeam.TeamScore--;
-        GAME_CONTROLLER.ActiveTeam.NumOfSkips++;
-        IsWordLoaded = false;
+        if(timerRunning)
+        {
+            GAME_CONTROLLER.ActiveTeam.TeamScore--;
+            GAME_CONTROLLER.ActiveTeam.NumOfSkips++;
+            IsWordLoaded = false;
+        }
     }
 }

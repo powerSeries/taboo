@@ -1,5 +1,6 @@
 package com.example.taboo;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -51,8 +52,9 @@ public class TeamMenu extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("Team_1_Name", teamName_1);
         bundle.putString("Team_2_Name", teamName_2);
+
+        numPlayers = numPlayers * numRounds;
         bundle.putInt("numOfPlayers", numPlayers);
-        bundle.putInt("numOfRounds", numRounds);
         switchToScoreMenu.putExtras(bundle);
         startActivity(switchToScoreMenu);
     }

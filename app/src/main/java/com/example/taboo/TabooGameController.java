@@ -9,35 +9,36 @@ public class TabooGameController implements Serializable
 {
     public TeamModel ActiveTeam;
 
-    public ArrayList<String> dupeList;
-
     public TabooGameController()
     {
-        dupeList = new ArrayList<>();
     }
 
     public TabooWord popWord()
     {
         boolean IsWordSelected = false;
-
         TabooWord word = new TabooWord();
         while(!IsWordSelected)
         {
             word = PickOneRandom();
-            if(!dupeList.contains(word.Word))
-            {
-                dupeList.add(word.Word);
+            if(word != null)
                 IsWordSelected = true;
-            }
         }
-
         return word;
     }
 
     private TabooWord PickOneRandom()
     {
         int num = (int)(Math.random() * ActiveTeam.currentActiveList.size());
-        for(TabooWord word : ActiveTeam.currentActiveList) if (--num < 0 ) return word;
+        for(TabooWord word : ActiveTeam.currentActiveList)
+            if (--num < 0 )
+            {
+                ActiveTeam.currentActiveList.remove(word);
+                if(!ActiveTeam.usedWords.contains((word)))
+                    ActiveTeam.usedWords.add(word);
+
+                return word;
+            }
+
         throw new AssertionError();
     }
 }
