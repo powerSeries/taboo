@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.taboo.models.*;
 
@@ -68,6 +69,8 @@ public class ScoreMenu extends AppCompatActivity {
     {
         if(IsGameFinished)
         {
+            String teamWinner = (firstTeam.TeamScore > secondTeam.TeamScore) ? firstTeam.TeamName : secondTeam.TeamName;
+            Toast.makeText(getApplicationContext(), "Game has finished." + teamWinner + "has won!", Toast.LENGTH_LONG).show();
             ResetGame();
         }
 
