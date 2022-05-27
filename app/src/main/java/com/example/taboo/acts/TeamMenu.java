@@ -1,15 +1,15 @@
-package com.example.taboo;
+package com.example.taboo.acts;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.taboo.R;
+import com.example.taboo.acts.ScoreMenu;
 
 public class TeamMenu extends AppCompatActivity {
     String DEFAULT_TEAM_NAME = "Name";
@@ -31,6 +31,7 @@ public class TeamMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_team_menu);
 
         btnStartGame = (Button) findViewById(R.id.btn_startGame);

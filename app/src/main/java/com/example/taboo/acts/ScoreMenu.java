@@ -1,4 +1,4 @@
-package com.example.taboo;
+package com.example.taboo.acts;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,9 +11,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.taboo.R;
+import com.example.taboo.controllers.TabooGameController;
+import com.example.taboo.controllers.TabooWordsController;
 import com.example.taboo.models.*;
-
-import java.util.ArrayList;
 
 public class ScoreMenu extends AppCompatActivity {
     TabooGameController gameController;
@@ -42,6 +43,7 @@ public class ScoreMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_score_menu);
 
         FirstTeamActive = false;

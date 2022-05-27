@@ -14,16 +14,16 @@
         android:theme="@style/Theme.Taboo"
         tools:targetApi="31">
         <activity
-            android:name=".TabooGame"
+            android:name=".acts.TabooGame"
             android:exported="false" />
         <activity
-            android:name=".ScoreMenu"
+            android:name=".acts.ScoreMenu"
             android:exported="false" />
         <activity
-            android:name=".TeamMenu"
+            android:name=".acts.TeamMenu"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".acts.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

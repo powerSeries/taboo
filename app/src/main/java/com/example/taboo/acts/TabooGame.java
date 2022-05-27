@@ -1,4 +1,4 @@
-package com.example.taboo;
+package com.example.taboo.acts;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.taboo.R;
+import com.example.taboo.controllers.TabooGameController;
 import com.example.taboo.models.TabooWord;
 
 import java.util.ArrayList;
@@ -35,6 +37,7 @@ public class TabooGame extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_taboo_game);
 
         GAME_CONTROLLER = (TabooGameController) getIntent().getSerializableExtra("TabooGameController");

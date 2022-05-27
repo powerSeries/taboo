@@ -1,4 +1,4 @@
-package com.example.taboo;
+package com.example.taboo.controllers;
 
 import android.content.Context;
 import android.content.res.AssetManager;
