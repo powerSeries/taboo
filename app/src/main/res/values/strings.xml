@@ -2,4 +2,10 @@
     <string name="app_name">taboo</string>
     <string name="taboo_reloaded">Taboo Reloaded</string>
     <string name="start">Start</string>
+    <string name="team_1">Team 1</string>
+    <string name="team_2">Team 2</string>
+    <string name="number_of_players"># of Players</string>
+    <string name="number_of_rounds"># of Rounds</string>
+    <string name="default_team_name">Name</string>
+    <string name="start_game">Start Game</string>
 </resources>
