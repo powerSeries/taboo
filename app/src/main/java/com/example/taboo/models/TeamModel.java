@@ -23,7 +23,7 @@ public class TeamModel implements Serializable
 
     public void UpdateScore(TeamModel teamModel)
     {
-        this.TeamScore += teamModel.TeamScore;
+        this.TeamScore = teamModel.TeamScore;
         this.NumOfSkips += teamModel.NumOfSkips;
     }
 
