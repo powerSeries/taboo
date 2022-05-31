@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textAlignment="center"
+    android:background="@color/main_background_color"
     tools:context=".game">
 
     <TextView
         android:id="@+id/gameTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="01:00"
+        android:text="@string/default_timer"
         android:textSize="50sp"
+        android:textColor="@color/team_text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -49,7 +51,9 @@
             android:id="@+id/goalWord"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:text="Word"
+            android:text="@string/default_word"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="24sp" />
 
@@ -57,7 +61,7 @@
             android:id="@+id/fw_1"
             android:layout_width="match_parent"
             android:layout_height="53dp"
-            android:text="fw_1"
+            android:text="@string/default_fw1"
             android:textAlignment="center"
             android:textSize="24sp" />
 
@@ -65,7 +69,7 @@
             android:id="@+id/fw_2"
             android:layout_width="match_parent"
             android:layout_height="53dp"
-            android:text="fw_2"
+            android:text="@string/default_fw2"
             android:textAlignment="center"
             android:textSize="24sp" />
 
@@ -73,7 +77,7 @@
             android:id="@+id/fw_3"
             android:layout_width="match_parent"
             android:layout_height="53dp"
-            android:text="fw_3"
+            android:text="@string/default_fw3"
             android:textAlignment="center"
             android:textSize="24sp" />
 
@@ -81,7 +85,7 @@
             android:id="@+id/fw_4"
             android:layout_width="match_parent"
             android:layout_height="53dp"
-            android:text="fw_4"
+            android:text="@string/default_fw4"
             android:textAlignment="center"
             android:textSize="24sp" />
 
@@ -89,7 +93,7 @@
             android:id="@+id/fw_5"
             android:layout_width="match_parent"
             android:layout_height="53dp"
-            android:text="fw_5"
+            android:text="@string/default_fw5"
             android:textAlignment="center"
             android:textSize="24sp" />
 
@@ -99,7 +103,8 @@
         android:id="@+id/btn_stopNstart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:background="@drawable/title_start_button"
+        android:text="@string/default_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -113,7 +118,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:backgroundTint="#FF0000"
-        android:text="- 1"
+        android:text="@string/skip_word"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -128,7 +133,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:backgroundTint="#2FFF00"
-        android:text="+1"
+        android:text="@string/positive_word"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"

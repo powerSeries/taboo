@@ -8,4 +8,15 @@
     <string name="number_of_rounds"># of Rounds</string>
     <string name="default_team_name">Name</string>
     <string name="start_game">Start Game</string>
+    <string name="start_round">Start Round</string>
+    <string name="default_text">Default</string>
+    <string name="default_word">Word</string>
+    <string name="default_fw1">FW1</string>
+    <string name="default_fw2">FW2</string>
+    <string name="default_fw3">FW3</string>
+    <string name="default_fw4">FW4</string>
+    <string name="default_fw5">FW5</string>
+    <string name="default_timer">01:00</string>
+    <string name="skip_word">-1</string>
+    <string name="positive_word">+1</string>
 </resources>
