@@ -39,8 +39,9 @@
     <LinearLayout
         android:id="@+id/linL_forbiddenWords"
         android:layout_width="341dp"
-        android:layout_height="345dp"
+        android:layout_height="326dp"
         android:layout_marginTop="1dp"
+        android:background="@drawable/words_border"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -52,10 +53,10 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:text="@string/default_word"
-            android:textStyle="bold"
-            android:textColor="@color/black"
             android:textAlignment="center"
-            android:textSize="24sp" />
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/fw_1"
