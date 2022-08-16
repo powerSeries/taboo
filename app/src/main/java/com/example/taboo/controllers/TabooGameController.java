@@ -1,16 +1,22 @@
 package com.example.taboo.controllers;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.example.taboo.models.*;
 
 public class TabooGameController implements Serializable
 {
     public TeamModel ActiveTeam;
+    private ArrayList<TabooWord> duplicateWords;
+    private ArrayList<TabooWord> currentActiveList;
 
     public TabooGameController()
     {
+        duplicateWords = new ArrayList<>();
+        currentActiveList = new ArrayList<>();
     }
 
     public TabooWord popWord()
