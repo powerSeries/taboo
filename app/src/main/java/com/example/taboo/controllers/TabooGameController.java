@@ -1,16 +1,22 @@
 package com.example.taboo.controllers;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.example.taboo.models.*;
 
 public class TabooGameController implements Serializable
 {
     public TeamModel ActiveTeam;
+    private ArrayList<TabooWord> duplicateWords;
+    private ArrayList<TabooWord> currentActiveList;
 
-    public TabooGameController()
+    public TabooGameController(ArrayList<TabooWord> allWords, ArrayList<TabooWord> allDupeWords)
     {
+        duplicateWords = allDupeWords;
+        currentActiveList = allWords;
     }
 
     public TabooWord popWord()
@@ -28,17 +34,15 @@ public class TabooGameController implements Serializable
 
     private TabooWord PickOneRandom()
     {
-        int num = (int)(Math.random() * ActiveTeam.currentActiveList.size());
-        for(TabooWord word : ActiveTeam.currentActiveList)
-            if (--num < 0 )
-            {
-                ActiveTeam.currentActiveList.remove(word);
-                if(!ActiveTeam.usedWords.contains((word)))
-                    ActiveTeam.usedWords.add(word);
+        // Get a random number from 0 - size of active list
+        int num = (int)(Math.random() * currentActiveList.size());
 
-                return word;
-            }
+        // Get the word at that index: num
+        TabooWord currentWord = currentActiveList.get(num);
 
-        throw new AssertionError();
+        // Remove the word at index: num
+        currentActiveList.remove(num);
+
+        return currentWord;
     }
 }
