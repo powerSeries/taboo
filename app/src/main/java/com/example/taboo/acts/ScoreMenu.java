@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,8 @@ public class ScoreMenu extends AppCompatActivity {
     int playersPlayed;
     int playerAmount;
 
+    ListView wordHistory;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +66,9 @@ public class ScoreMenu extends AppCompatActivity {
         });
         playerAmount = bundle.getInt("numOfPlayers");
         playersPlayed = 0;
+
+        wordHistory = (ListView)findViewById(R.id.word_history);
+
         // Initialize two teams model
         InitializeTeams(bundle);
     }
