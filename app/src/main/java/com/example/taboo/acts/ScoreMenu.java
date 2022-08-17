@@ -16,6 +16,8 @@ import com.example.taboo.controllers.TabooGameController;
 import com.example.taboo.controllers.TabooWordsController;
 import com.example.taboo.models.*;
 
+import java.util.Objects;
+
 public class ScoreMenu extends AppCompatActivity {
     TabooGameController gameController;
     TabooWordsController wordsController;
@@ -43,7 +45,7 @@ public class ScoreMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_score_menu);
 
         FirstTeamActive = false;
@@ -116,6 +118,7 @@ public class ScoreMenu extends AppCompatActivity {
         {
             if(resultCode == RESULT_OK)
             {
+                assert data != null;
                 TeamModel resultTeamModel = (TeamModel)data.getSerializableExtra("resultActiveTeam");
                 UpdateScore(resultTeamModel);
                 if(playersPlayed == playerAmount)
@@ -170,6 +173,8 @@ public class ScoreMenu extends AppCompatActivity {
     {
         String firstTeamName = bundle.getString("Team_1_Name");
         firstTeam = new TeamModel(firstTeamName, 0);
+
+        //TODO: Remove currentActiveList from TeamModel
         firstTeam.currentActiveList = wordsController.GetNumWords(50);
         team1Name = findViewById(R.id.score_Team1Name);
         team1Name.setText(firstTeam.TeamName);
@@ -178,12 +183,14 @@ public class ScoreMenu extends AppCompatActivity {
 
         String secondTeamName = bundle.getString("Team_2_Name");
         secondTeam = new TeamModel(secondTeamName, 0);
+
+        //TODO: Remove currentActiveList from TeamModel
         secondTeam.currentActiveList = wordsController.GetNumWords(50);
         team2Name = findViewById(R.id.score_Team2Name);
         team2Name.setText(secondTeam.TeamName);
         team2score = findViewById(R.id.team2_score);
         team2score.setText(Integer.toString(secondTeam.TeamScore));
 
-        gameController = new TabooGameController();
+        gameController = new TabooGameController(wordsController.allTabooWords, wordsController.dupeWords);
     }
 }
