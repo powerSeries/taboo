@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Parcelable;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -28,6 +30,7 @@ public class TabooGame extends AppCompatActivity {
 
     private TextView goalWord;
     private ArrayList<TextView> forbiddenWords;
+    private ArrayList<String> tWordHistory;
     private boolean IsWordLoaded;
 
     private Button positiveBtn;
@@ -42,6 +45,7 @@ public class TabooGame extends AppCompatActivity {
 
         GAME_CONTROLLER = (TabooGameController) getIntent().getSerializableExtra("TabooGameController");
         IsWordLoaded = false;
+        tWordHistory = new ArrayList<>();
         countdownText = findViewById(R.id.gameTimer);
         countdownButton = findViewById(R.id.btn_stopNstart);
         countdownButton.setText("START");
@@ -137,6 +141,7 @@ public class TabooGame extends AppCompatActivity {
             {
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("resultActiveTeam", GAME_CONTROLLER.ActiveTeam);
+                resultIntent.putExtra("tWordHistory", tWordHistory);
                 setResult(RESULT_OK, resultIntent);
                 finish();
             }
@@ -154,6 +159,7 @@ public class TabooGame extends AppCompatActivity {
         {
             IsWordLoaded = true;
             TabooWord currentWord = GAME_CONTROLLER.popWord();
+            tWordHistory.add(currentWord.Word);
             LoadWordToScreen(currentWord);
         }
     }

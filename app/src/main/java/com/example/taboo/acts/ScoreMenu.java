@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import com.example.taboo.controllers.TabooGameController;
 import com.example.taboo.controllers.TabooWordsController;
 import com.example.taboo.models.*;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class ScoreMenu extends AppCompatActivity {
@@ -69,7 +71,7 @@ public class ScoreMenu extends AppCompatActivity {
         playerAmount = bundle.getInt("numOfPlayers");
         playersPlayed = 0;
 
-        wordHistory = (ListView)findViewById(R.id.word_history);
+        wordHistory = findViewById(R.id.word_history);
 
         // Initialize two teams model
         InitializeTeams(bundle);
@@ -126,13 +128,21 @@ public class ScoreMenu extends AppCompatActivity {
             {
                 assert data != null;
                 TeamModel resultTeamModel = (TeamModel)data.getSerializableExtra("resultActiveTeam");
+                ArrayList<String> tWordHistory = (ArrayList<String>) data.getSerializableExtra("tWordHistory");
                 UpdateScore(resultTeamModel);
+                UpdateWordHistory(tWordHistory);
                 if(playersPlayed == playerAmount)
                 {
                     IsGameFinished = true;
                 }
             }
         }
+    }
+
+    private void UpdateWordHistory(ArrayList<String> history)
+    {
+        ArrayAdapter<String> mHistory = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, history);
+        wordHistory.setAdapter(mHistory);
     }
 
     private void UpdateScore(TeamModel resultModel)
